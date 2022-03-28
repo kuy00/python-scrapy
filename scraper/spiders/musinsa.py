@@ -9,14 +9,13 @@ class MusinsaSpider(scrapy.Spider):
         'https://www.musinsa.com/ranking/best',
         'https://www.musinsa.com/ranking/brand',
     ]
-
-    def __init__(self, category=None):
-        self.category = category
+    category = ('001', '002', '003', '004', '005', '006', '007', '008', '009')
 
     def start_requests(self):
         for url in self.start_urls:
             print(url)
-            yield scrapy.Request(url + f'?mainCategory={self.category}', callback=self.parse)
+            for code in self.category:
+                yield scrapy.Request(url + f'?mainCategory={code}', callback=self.parse)
 
     def parse(self, response):
         print('test {}'.format(response.url))

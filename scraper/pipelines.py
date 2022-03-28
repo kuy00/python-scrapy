@@ -10,4 +10,9 @@ from itemadapter import ItemAdapter
 
 class ScraperPipeline:
     def process_item(self, item, spider):
+        adapter = ItemAdapter(item)
+        print('pipeline')
+        print(item)
+        print(adapter)
+        print(spider)
         return item

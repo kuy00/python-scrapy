@@ -3,7 +3,7 @@
 ## Run
 
 ```bash
-    scrapy crawl {name}
+    scrapy crawl {name} -O export-file-name -a param=value --nolog
 ```
 
 ## Create Spider

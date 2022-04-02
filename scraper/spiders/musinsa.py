@@ -1,5 +1,5 @@
 import scrapy
-from ..items.ranking import Ranking
+from models.ranking import Ranking
 
 
 class MusinsaSpider(scrapy.Spider):
@@ -9,7 +9,7 @@ class MusinsaSpider(scrapy.Spider):
         'https://www.musinsa.com/ranking/best',
         'https://www.musinsa.com/ranking/brand',
     ]
-    category = ('004',)
+    category = ('001',)
 
     def start_requests(self):
         for url in self.start_urls:
@@ -23,7 +23,8 @@ class MusinsaSpider(scrapy.Spider):
 
         items = response.xpath('//form[@id="goodsRankForm"]//li[@class="li_box"]')
         for item in items:
-            ranking = Ranking()
-            ranking['brand'] = item.xpath('.//p[@class="item_title"]/a/text()').get()
-            ranking['name'] = item.xpath('.//p[@class="list_info"]/a/@title').get()
+            ranking = Ranking(
+                brand=item.xpath('.//p[@class="item_title"]/a/text()').get(),
+                name=item.xpath('.//p[@class="list_info"]/a/@title').get(),
+            )
             yield ranking

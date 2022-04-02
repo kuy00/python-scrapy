@@ -2,6 +2,9 @@ from dataclasses import dataclass
 
 
 @dataclass
-class Ranking:
+class Product:
+    __model__ = 'Product'
+
     brand: str
     name: str
+

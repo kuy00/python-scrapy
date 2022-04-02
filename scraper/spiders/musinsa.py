@@ -1,5 +1,5 @@
 import scrapy
-from models.ranking import Ranking
+from scraper.Items.product import Product
 
 
 class MusinsaSpider(scrapy.Spider):
@@ -23,7 +23,7 @@ class MusinsaSpider(scrapy.Spider):
 
         items = response.xpath('//form[@id="goodsRankForm"]//li[@class="li_box"]')
         for item in items:
-            ranking = Ranking(
+            ranking = Product(
                 brand=item.xpath('.//p[@class="item_title"]/a/text()').get(),
                 name=item.xpath('.//p[@class="list_info"]/a/@title').get(),
             )

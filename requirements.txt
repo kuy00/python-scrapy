@@ -1,2 +1,4 @@
 scrapy
 orator
+PyMySQL
+mysqlclient

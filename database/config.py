@@ -1,14 +1,15 @@
 from orator import DatabaseManager
 
-config = {
+databases = {
+    'default': 'mysql',
     'mysql': {
         'driver': 'mysql',
         'host': 'localhost',
-        'database': 'database',
+        'database': 'ranking',
         'user': 'root',
-        'password': '',
+        'password': 'gimuyeong1@',
         'prefix': ''
     }
 }
 
-db = DatabaseManager(config)
+db = DatabaseManager(databases)

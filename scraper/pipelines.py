@@ -6,13 +6,12 @@
 
 # useful for handling different item types with a single interface
 from itemadapter import ItemAdapter
+from models.modelImporter import ModelImporter
 
 
 class ScraperPipeline:
     def process_item(self, item, spider):
-        adapter = ItemAdapter(item)
-        print('pipeline')
-        print(item)
-        print(adapter)
-        print(spider)
+        model_name = getattr(item, '__model__')
+        model = ModelImporter.get_model(model_name)
+        model.create(item.__dict__)
         return item

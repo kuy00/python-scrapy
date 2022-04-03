@@ -6,8 +6,8 @@ databases = {
         'driver': 'mysql',
         'host': 'localhost',
         'database': 'ranking',
-        'user': 'root',
-        'password': 'gimuyeong1@',
+        'user': 'test',
+        'password': 'test1!',
         'prefix': ''
     }
 }

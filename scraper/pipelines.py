@@ -30,7 +30,8 @@ class ScraperPipeline:
                 target_item = item[key]
 
                 if parent_model != '':
-                    parent_model.product().create(target_item.__dict__)
+                    target_relation = getattr(parent_model, key)()
+                    target_relation.create(target_item.__dict__)
                 else:
                     model_name = getattr(target_item, '__model__')
                     model = ModelImporter.get_model(model_name)

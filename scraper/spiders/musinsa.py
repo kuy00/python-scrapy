@@ -1,5 +1,6 @@
 import scrapy
 from scraper.Items.product import Product
+from scraper.Items.category import Category
 
 
 class MusinsaSpider(scrapy.Spider):
@@ -23,8 +24,15 @@ class MusinsaSpider(scrapy.Spider):
 
         items = response.xpath('//form[@id="goodsRankForm"]//li[@class="li_box"]')
         for item in items:
-            ranking = Product(
+            category = Category(
+                name='상의',
+            )
+            product = Product(
                 brand=item.xpath('.//p[@class="item_title"]/a/text()').get(),
                 name=item.xpath('.//p[@class="list_info"]/a/@title').get(),
             )
-            yield ranking
+
+            yield {
+                'category': category,
+                'product': product,
+            }

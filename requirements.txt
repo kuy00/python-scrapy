@@ -1,2 +1,2 @@
 scrapy
-orator
+scrapy-fake-useragent

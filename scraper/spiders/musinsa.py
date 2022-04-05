@@ -1,5 +1,5 @@
 import scrapy
-from ..items.ranking import Ranking
+from ..Items.ranking import Ranking
 
 
 class MusinsaSpider(scrapy.Spider):
